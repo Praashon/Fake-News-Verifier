@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { motion } from 'motion/react'
 import { CheckCircleIcon, XCircleIcon, MagnifyingGlassIcon, ExclamationTriangleIcon, ShieldCheckIcon, PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { searchVerifiedNews, verifyContent, formatAddress, getEtherscanUrl } from '../utils/blockchain'
+import { searchVerifiedNews, verifyContent, formatAddress, getAddressUrl } from '../utils/blockchain'
 import { analyzeNewsContent, analyzeNewsImage } from '../utils/factChecker'
 import type { ImageAnalysisResult } from '../utils/factChecker'
 import { generateContentHash, generateFileHash, hexToBytes32 } from '../utils/hash'
@@ -451,7 +451,7 @@ Example: 'Scientists discover new cure for cancer' or paste an entire article"
               <div className="bg-white/5 rounded-lg p-4">
                 <p className="text-white/60 text-sm">Publisher</p>
                 <a
-                  href={getEtherscanUrl(imageBlockchainMatch.publisher, 'address')}
+                  href={getAddressUrl(imageBlockchainMatch.publisher)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-cyan-400 hover:text-cyan-300 font-mono"
@@ -622,7 +622,7 @@ Example: 'Scientists discover new cure for cancer' or paste an entire article"
                             <div className="bg-black/30 rounded-lg p-4">
                               <p className="text-white/60 text-sm mb-1">Registered By</p>
                               <a 
-                                href={getEtherscanUrl(exactBlockchainMatch.publisher)}
+                                href={getAddressUrl(exactBlockchainMatch.publisher)}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-cyan-400 font-mono hover:underline"
